@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useReducer } from 'react';
+import ShopContext from './ShopContext';
+import ShopReducer from './ShopReducer';
+import ShopList from './views/ShopList';
+import Navbar from './components/NavBar';
+import { Switch, Route } from 'react-router-dom';
 
-function App() {
+function App(){
+  const initialState = useContext(ShopContext);
+  const [state, dispatch] = useReducer(ShopReducer, initialState);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <ShopContext.Provider value={{ state, dispatch }}>
+      <Navbar/>
+      <h1>Welcome to Ocarina Pawn Shop!</h1>
+      <Switch>
+        <Route path="/products">
+          <ShopList/>
+        </Route>
+      </Switch>
+    </ShopContext.Provider>
+  )
+};
 
 export default App;

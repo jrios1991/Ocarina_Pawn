@@ -7,7 +7,7 @@ const ShopContext = React.createContext({
         {
             productName: "Deku Shield",
             serialNumber: 1234567,
-            price: `$${50}`,
+            price: 50,
             manufacturer: 'lost woods inc',
             category: 'shield',
             quantity: 5,
@@ -16,7 +16,7 @@ const ShopContext = React.createContext({
         {
             productName: "Mirror Shield",
             serialNumber: 1234568,
-            price: `$${200}`,
+            price: 200,
             manufacturer: 'Gerudo LLC',
             category: 'shield',
             quantity: 2,

@@ -1,22 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {Cart} from '../CartContext';
+import {Cart} from '../context/CartContext';
+import ShopContext from '../context/ShopContext';
+import SearchBar from './SearchBar';
+import './NavBar.css';
 
 function NavBar() {
     const [myCart, setMyCart] = useContext(Cart);
-    return (
-        <div>
-            <nav>
-                <p>Ocarina Pawn Shop</p>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/products">Our store</Link></li>
-                </ul>
-                <ul>
-                    <li><Link to="/cart">Shopping Cart{myCart.length > 0 ? ' ' + myCart.length : '' }</Link></li>
-                </ul>
-            </nav>
 
+    return (
+        <div className="main-nav">
+            <header>
+                <p className="nav-paragraph">Ocarina Pawn Shop</p>
+                <nav className="nav-navbar">
+                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/products" className="nav-link">Our store</Link>
+                    <Link to="/cart" className="nav-link">Shopping Cart{myCart.length > 0 ? ' ' + myCart.length : '' }</Link>
+                    <Link to="/search" className="nav-link">Search</Link>
+                </nav>
+            </header>
         </div>
     )
 }

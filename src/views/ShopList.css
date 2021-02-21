@@ -1,0 +1,23 @@
+.card-image {
+    height:90px;
+    width: 90px;
+    padding-left: 10%;
+}
+.cardlist{
+    width: 75%;
+    float: left;
+}
+.csscard {
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+}
+
+.card-paragraph {
+    color:red;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+}

@@ -1,8 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext  } from 'react';
 import { Link } from 'react-router-dom';
 import {Cart} from '../context/CartContext';
-import ShopContext from '../context/ShopContext';
-import SearchBar from './SearchBar';
 import './NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons'

@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
-import ShopContext from '../context/ShopContext';
+import React, { useContext } from 'react';
 import {Cart} from '../context/CartContext';
 import Footer from '../components/Footer';
 import './ShoppingCart.css'
 
 function ShoppingCart() {
-    const { state } = useContext(ShopContext);
     const [myCart, setMyCart] = useContext(Cart);
     const total = myCart.reduce((add, current) => add + current.price, 0);
     return (

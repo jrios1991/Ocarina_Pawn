@@ -2,15 +2,31 @@
     height:90px;
     width: 90px;
     padding-left: 10%;
+    margin-left: 20%;
 }
+
 .cardlist{
     width: 75%;
     float: left;
 }
+
 .csscard {
     text-align: center;
     display: inline-block;
     width: 20%;
+    margin: 0 2% 0 2%;
+}
+
+@media screen and (max-width: 992px){
+    .csscard {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .csscard {
+        width: 98%;
+    }
 }
 
 .card-paragraph {

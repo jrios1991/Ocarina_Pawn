@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {Link, useRouteMatch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ShopContext from '../context/ShopContext';
 import Footer from '../components/Footer';
 import './SearchBar.css';
@@ -32,11 +32,14 @@ function SearchBar() {
                 }
             }).map((item, key) => {
                 return (
-                    <div key={key}>
+                    <div key={key} className="search-list">
                         {search.length > 0 
                         ? <div>
                             <p>{item.productName}</p>
+                            <img src={item.productImage} />
+                            <br/>
                             <Link to={`products/${item.serialNumber}`}>Details</Link>
+                            <hr/>
                         </div>
                         : null}
                     </div>

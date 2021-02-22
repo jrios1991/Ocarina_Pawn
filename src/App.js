@@ -1,15 +1,15 @@
 import React, { useContext, useReducer, useState } from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import ShopContext from './context/ShopContext';
 import ShopReducer from './context/ShopReducer';
 import ShopList from './views/ShopList';
 import Navbar from './components/NavBar';
 import LandingPage from './views/LandingPage'
+import SearchBar from './components/SearchBar';
 import ProductDetails from './views/ProductDetails';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import ShoppingCart from './views/ShoppingCart';
 import {Cart} from './context/CartContext';
 import './App.css';
-import SearchBar from './components/SearchBar';
 
 function App(){
   const { url } = useRouteMatch();
@@ -41,7 +41,6 @@ function App(){
         </Cart.Provider>
       </ShopContext.Provider>
     </div>
-
   )
 };
 

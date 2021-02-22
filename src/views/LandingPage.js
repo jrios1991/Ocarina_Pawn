@@ -6,7 +6,7 @@ import './LandingPage.css';
 
 function LandingPage() {
     return (
-        <div>
+        <div className="landing">
             <h1 className="header">Welcome to Ocarina Pawn Shop!</h1>
             <div>
                 <img src={Landing} alt="link in a field" className="landing-image"/>

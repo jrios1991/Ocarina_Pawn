@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import ShopContext from '../context/ShopContext'
 import { Link, Route, useRouteMatch, withRouter } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
@@ -8,7 +8,7 @@ import './ShopList.css';
 function ShopList() {
     const [myCart, setMyCart] = useContext(Cart);
     const { state } = useContext(ShopContext);
-    const title = `We have ${state.storeItems.length} items available!`;
+    const title = `Our pawn shop!`;
     const { url } = useRouteMatch();
     const itemList = state.storeItems.map(item => {
         const addToCart = () => {
@@ -18,7 +18,7 @@ function ShopList() {
             }
         };
         return (
-                <div className="col csscard" key={item.serialNumber}>
+                <div className="csscard" key={item.serialNumber}>
                     <div className="card mb-4 shadow-sm">
                         <div className="card-header">
                             <h4 className="my-0 fw-normal">{item.productName}</h4>
@@ -47,7 +47,7 @@ function ShopList() {
             <h1>{title}</h1>
             <div>
                 <h3>Products</h3>
-                <ul className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 list-unstyled mt-3 mb-4 cardlist">{itemList}</ul>
+                <ul className="cardlist">{itemList}</ul>
             </div>
             <Route path={`${url}/:itemId`}>
                 <ProductDetails data={state.storeItems}/>

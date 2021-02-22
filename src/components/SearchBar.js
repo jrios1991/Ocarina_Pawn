@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import {Link, useRouteMatch} from 'react-router-dom';
 import ShopContext from '../context/ShopContext';
+import Footer from '../components/Footer';
+import './SearchBar.css';
 
 
 function SearchBar() {
@@ -12,7 +14,7 @@ function SearchBar() {
     };
 
     return (
-        <div>
+        <div className="search">
             <input type="text"
             placeholder="Search..."
             onChange={handleChange}
@@ -40,6 +42,7 @@ function SearchBar() {
                     </div>
                 );
             })}
+            <Footer/>
         </div>
     )
 }

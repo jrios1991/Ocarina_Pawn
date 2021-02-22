@@ -13,7 +13,6 @@ function ProductDetails(props) {
     const { url } = useRouteMatch();
     const addToCart = () => {
         setMyCart(currentCart => [...currentCart, item]);
-        console.log(item)
     };
 
     const item = state.storeItems.find(itemSearch => itemSearch.serialNumber === Number(itemId));
@@ -30,7 +29,9 @@ function ProductDetails(props) {
                 </ul>
                 <p>${item.price}.00</p>
             </div>
-            <Link to="/products">Our store</Link>
+            <Link to="/products">
+                <button type="button" className="btn btn-outline-primary">Our products</button>
+            </Link>
         </div>
     )
 }

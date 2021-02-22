@@ -28,8 +28,13 @@ function ShopList() {
                             <h4 className="card-title pricing-card-title">{`$${item.price}.00`}</h4>
                             <ul className="list-unstyled mt-3 mb-4">
                                 <li>
-                                <p className="card-paragraph">{item.quantity > 0 ? <button onClick={addToCart}>Add to Cart</button>: 'Sold Out!' }</p>
-                                        <button><Link className="card-link" to={`${url}/${item.serialNumber}`}>{item.productName}</Link></button>
+                                    <p className="card-paragraph">{item.quantity > 0 ?
+                                        <button className="btn btn-outline-success button-list" onClick={addToCart}>Add to Cart</button>: 
+                                        'Sold Out!' }
+                                    </p>
+                                    <Link className="card-link" to={`${url}/${item.serialNumber}`}>
+                                        <button className="btn btn-primary button-list">{item.productName}</button>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

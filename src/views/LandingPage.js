@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Landing from '../images/shop-art.jpg';
 import './LandingPage.css';
 
@@ -9,9 +10,11 @@ function LandingPage() {
             <h1 className="header">Welcome to Ocarina Pawn Shop!</h1>
             <div>
                 <img src={Landing} alt="link in a field" className="landing-image"/>
-                <button className="landing-button"><Link to="/products" className="landing-link">Shop Now!</Link></button>
+                <Link to="/products" className="landing-link">
+                    <button className="landing-button btn btn-outline-success">Shop Now!</button>
+                </Link>
             </div>
-
+        <Footer />
         </div>
     )
 }

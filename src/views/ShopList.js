@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import ShopContext from '../context/ShopContext'
 import { Link, Route, useRouteMatch } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
+import Footer from '../components/Footer';
 import Modal from './Modal';
 import {Cart} from '../context/CartContext';
 import './ShopList.css';
@@ -43,11 +44,13 @@ function ShopList() {
                             </ul>
                         </div>
                     </div>
+                    
                 </div>
         );
     });
     return (
-        <div className="container">
+        <div >
+            <div className="container shop-list">
             <h1>{title}</h1>
             <div>
                 <h3>Products</h3>
@@ -60,7 +63,9 @@ function ShopList() {
                     </Route>
                 </div>
             </Modal>
+            </div>
 
+            <Footer/>
         </div>
     ); 
 };

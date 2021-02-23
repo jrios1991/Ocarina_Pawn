@@ -24,10 +24,9 @@ function SearchBar() {
             onChange={handleChange}
             value={search}/>
             {state.storeItems.filter(item => {
-                if (search == "") {
-                    return item;
-                } else if(item.productName.toLowerCase().includes(search.toLocaleLowerCase()) || 
-                item.category.toLowerCase().includes(search.toLocaleLowerCase())) {
+                if(item.productName.toLowerCase().includes(search.toLocaleLowerCase()) || 
+                item.category.toLowerCase().includes(search.toLocaleLowerCase()) ||
+                item.manufacturer.toLowerCase().includes(search.toLocaleLowerCase())) {
                     return item;
                 }
             }).map((item, key) => {

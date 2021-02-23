@@ -37,7 +37,6 @@ function Modal({open, children, onClose}) {
                     <button className="btn btn-warning modal-button" onClick={onClose}>Close</button>
                 </Link>
                 {children}
-
             </div>
         </>,
         document.getElementById('portal')

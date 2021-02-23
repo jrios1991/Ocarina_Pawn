@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import ShopContext from '../context/ShopContext'
-import { Link, Route, useRouteMatch, withRouter } from 'react-router-dom';
+import { Link, Route, useRouteMatch } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
 import Modal from './Modal';
 import {Cart} from '../context/CartContext';
@@ -58,9 +58,6 @@ function ShopList() {
                     <Route path={`${url}/:itemId`}>
                         <ProductDetails data={state.storeItems}/>
                     </Route>
-                    <Route exact path={url}>
-                        <p>Please select a product</p>
-                    </Route>
                 </div>
             </Modal>
 
@@ -69,4 +66,4 @@ function ShopList() {
 };
 
 
-export default (withRouter(ShopList));
+export default ShopList;

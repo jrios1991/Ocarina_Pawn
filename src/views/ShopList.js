@@ -33,7 +33,7 @@ function ShopList() {
                                         'Sold Out!' }
                                     </p>
                                     <Link className="card-link" to={`${url}/${item.serialNumber}`}>
-                                        <button className="btn btn-primary button-list">{item.productName}</button>
+                                        <button className="btn btn-warning button-list">{item.productName}</button>
                                     </Link>
                                 </li>
                             </ul>

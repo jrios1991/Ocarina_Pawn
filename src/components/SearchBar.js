@@ -21,11 +21,7 @@ function SearchBar() {
             value={search}/>
             {state.storeItems.filter(item => {
                 if (search == "") {
-                    return (
-                        <div>
-                            <p>Please enter a search!</p>
-                        </div>
-                    );
+                    return item;
                 } else if(item.productName.toLowerCase().includes(search.toLocaleLowerCase()) || 
                 item.category.toLowerCase().includes(search.toLocaleLowerCase())) {
                     return item;

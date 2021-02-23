@@ -1,15 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ShopContext from '../context/ShopContext'
 import { Link, Route, useRouteMatch, withRouter } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
+import Modal from './Modal';
 import {Cart} from '../context/CartContext';
 import './ShopList.css';
 
 function ShopList() {
     const [myCart, setMyCart] = useContext(Cart);
     const { state } = useContext(ShopContext);
+    const [isOpen, setIsOpen] = useState(false);
     const title = `Our pawn shop!`;
     const { url } = useRouteMatch();
+
     const itemList = state.storeItems.map(item => {
         const addToCart = () => {
             if(item.quantity > 0){
@@ -33,7 +36,7 @@ function ShopList() {
                                         'Sold Out!' }
                                     </p>
                                     <Link className="card-link" to={`${url}/${item.serialNumber}`}>
-                                        <button className="btn btn-warning button-list">{item.productName}</button>
+                                        <button className="btn btn-warning button-list" onClick={() => setIsOpen(true)}>{item.productName}</button>
                                     </Link>
                                 </li>
                             </ul>
@@ -49,12 +52,17 @@ function ShopList() {
                 <h3>Products</h3>
                 <ul className="cardlist">{itemList}</ul>
             </div>
-            <Route path={`${url}/:itemId`}>
-                <ProductDetails data={state.storeItems}/>
-            </Route>
-            <Route exact path={url}>
-                <p>Please select a product</p>
-            </Route>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                <div>
+                    <Route path={`${url}/:itemId`}>
+                        <ProductDetails data={state.storeItems}/>
+                    </Route>
+                    <Route exact path={url}>
+                        <p>Please select a product</p>
+                    </Route>
+                </div>
+            </Modal>
+
         </div>
     ); 
 };

@@ -6,20 +6,19 @@
 }
 
 .cardlist{
-    width: 75%;
-    float: left;
+    width: 100%;
 }
 
 .csscard {
     text-align: center;
     display: inline-block;
-    width: 20%;
+    width: 16%;
     margin: 0 2% 0 2%;
 }
 
 @media screen and (max-width: 992px){
     .csscard {
-        width: 48%;
+        width: 40%;
     }
 }
 

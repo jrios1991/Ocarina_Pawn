@@ -9,6 +9,7 @@ import SearchBar from './components/SearchBar';
 import ShoppingCart from './views/ShoppingCart';
 import {Cart} from './context/CartContext';
 import './App.css';
+import Success from './views/Success';
 
 function App(){
   const initialState = useContext(ShopContext);
@@ -28,6 +29,9 @@ function App(){
             </Route>
             <Route path="/search">
               <SearchBar />
+            </Route>
+            <Route path="/success">
+              <Success/>
             </Route>
             <Route path="/">
               <LandingPage />

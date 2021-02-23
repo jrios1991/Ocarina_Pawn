@@ -1,3 +1,21 @@
 .cart {
     margin: 5% 0 5% 5%;
 }
+
+.cart-list {
+    /* display: inline-block; */
+    margin-left: 10%;
+    width: 50%;
+    float: left;
+    margin-bottom: 3%;
+}
+
+.list-details {
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.cart-checkout {
+    display: inline-block;
+    margin-left: 1%;
+}

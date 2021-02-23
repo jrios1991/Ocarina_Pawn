@@ -33,11 +33,11 @@ function Modal({open, children, onClose}) {
         <>
             <div style={overlayStyles} />
             <div style={modalStyles}>
-                
                 <Link to="/products">
                     <button className="btn btn-warning modal-button" onClick={onClose}>Close</button>
                 </Link>
                 {children}
+
             </div>
         </>,
         document.getElementById('portal')

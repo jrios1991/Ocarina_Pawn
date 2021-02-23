@@ -1,12 +1,16 @@
 import React, { useState, useContext } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useRouteMatch, Route} from 'react-router-dom';
 import ShopContext from '../context/ShopContext';
+import ProductDetails from '../views/ProductDetails';
 import Footer from '../components/Footer';
+import Modal from '../views/Modal';
 import './SearchBar.css';
 
 
 function SearchBar() {
     const [search, setSearch] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const { url } = useRouteMatch();
     const { state } = useContext(ShopContext);
     const handleChange = event => {
         event.preventDefault();
@@ -29,12 +33,22 @@ function SearchBar() {
             }).map((item, key) => {
                 return (
                     <div key={key} className="search-list">
-                        {search.length > 0 
-                        ? <div>
-                            <p>{item.productName}</p>
+                        {search.length > 0 ? 
+                        <div>
+                            <h3>{item.productName}</h3>
                             <img src={item.productImage} />
                             <br/>
-                            <Link to={`products/${item.serialNumber}`}>Details</Link>
+                            <br/>
+                            <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                                <div>
+                                    <Route path={`${url}/:itemId`}>
+                                        <ProductDetails data={state.storeItems}/>
+                                    </Route>
+                                </div>
+                            </Modal>
+                            <Link className="card-link" to={`${url}/${item.serialNumber}`}>
+                                <button className="btn btn-success button-list" onClick={() => setIsOpen(true)}>{item.productName}</button>
+                            </Link>
                             <hr/>
                         </div>
                         : null}

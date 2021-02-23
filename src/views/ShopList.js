@@ -29,11 +29,12 @@ function ShopList() {
                         <div className="card body">
                             <img src={item.productImage} className="card-image" />
                             <h4 className="card-title pricing-card-title">{`$${item.price}.00`}</h4>
+                            <p>Quantity: {item.quantity}</p>
                             <ul className="list-unstyled mt-3 mb-4">
                                 <li>
                                     <p className="card-paragraph">{item.quantity > 0 ?
                                         <button className="btn btn-outline-success button-list" onClick={addToCart}>Add to Cart</button>: 
-                                        'Sold Out!' }
+                                        <button className="btn btn-failure button-list failure" >Sold Out!</button> }
                                     </p>
                                     <Link className="card-link" to={`${url}/${item.serialNumber}`}>
                                         <button className="btn btn-warning button-list" onClick={() => setIsOpen(true)}>{item.productName}</button>

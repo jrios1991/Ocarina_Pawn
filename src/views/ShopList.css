@@ -40,3 +40,7 @@
 .button-list {
     width: 75%;
 }
+
+.failure {
+    color: red;
+}

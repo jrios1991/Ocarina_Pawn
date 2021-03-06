@@ -26,7 +26,8 @@ function SearchBar() {
             {state.storeItems.filter(item => {
                 if(item.productName.toLowerCase().includes(search.toLocaleLowerCase()) || 
                 item.category.toLowerCase().includes(search.toLocaleLowerCase()) ||
-                item.manufacturer.toLowerCase().includes(search.toLocaleLowerCase())) {
+                item.manufacturer.toLowerCase().includes(search.toLocaleLowerCase()) ||
+                item.serialNumber.toString().includes(search)) {
                     return item;
                 }
             }).map((item, key) => {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ShopContext from '../context/ShopContext'
 import { Link, Route, useRouteMatch } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
@@ -6,18 +6,34 @@ import Footer from '../components/Footer';
 import Modal from './Modal';
 import {Cart} from '../context/CartContext';
 import './ShopList.css';
+import axios from 'axios';
+
 
 function ShopList() {
-    const [myCart, setMyCart] = useContext(Cart);
+    // const [myCart, setMyCart] = useContext(Cart);
+    const [products, setProducts] = useState([])
+    const MY_PRODUCTS = "http://localhost:8080/products"
     const { state } = useContext(ShopContext);
     const [isOpen, setIsOpen] = useState(false);
     const title = `Our pawn shop!`;
     const { url } = useRouteMatch();
+    useEffect(() => {
+        axios.get(MY_PRODUCTS)
+        .then(response => {
+            console.log(response.data);
+            setProducts(response.data)
+        });
+    }, []);
+    const deleteFromList = () => {
+        axios.delete(MY_PRODUCTS +"/"+ products.serialNumber)
+        .then(resp => resp.data)
+    };
+    
+    const itemList = products.map(item => {
 
-    const itemList = state.storeItems.map(item => {
         const addToCart = () => {
             if(item.quantity > 0){
-                setMyCart(currentCart => [...currentCart, item]);
+                setProducts(currentCart => [...currentCart, item]);
                 item.quantity -= 1;
             }
         };
@@ -35,11 +51,13 @@ function ShopList() {
                                 <li>
                                     <p className="card-paragraph">{item.quantity > 0 ?
                                         <button className="btn btn-outline-success button-list" onClick={addToCart}>Add to Cart</button>: 
-                                        <button className="btn btn-failure button-list failure" >Sold Out!</button> }
+                                        <button className="btn btn-failure button-list failure" >Sold Out!</button>
+                                        }
                                     </p>
                                     <Link className="card-link" to={`${url}/${item.serialNumber}`}>
                                         <button className="btn btn-warning button-list" onClick={() => setIsOpen(true)}>{item.productName}</button>
                                     </Link>
+                                    {/* <button className="btn btn-danger" onClick={deleteFromList}>Delete</button> */}
                                 </li>
                             </ul>
                         </div>

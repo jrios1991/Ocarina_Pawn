@@ -1,31 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import ShopContext from '../context/ShopContext';
 import {Cart} from '../context/CartContext';
 import './ProductDetails.css';
+import axios from 'axios';
+
 
 function ProductDetails() {
     const [myCart, setMyCart] = useContext(Cart);
+    const [products, setProducts] = useState([])
     const { itemId } = useParams();
     const { state } = useContext(ShopContext);
-    const item = state.storeItems.find(itemSearch => itemSearch.serialNumber === Number(itemId));
+    const MY_PRODUCTS = "http://localhost:8080/products/" + itemId;
+    useEffect(() => {
+        axios.get(MY_PRODUCTS)
+        .then(response => {
+            console.log(response.data);
+            setProducts(response.data)
+        });
+    }, []);
     return (
         <div className="details">
             <div>
-                <h2>{item.productName}</h2>
-                <img src={item.productImage}></img>
+                <h2>{products.productName}</h2>
+                <img src={products.productImage}></img>
                 <ul className="details-ul">
-                    <li>Serial Number: {item.serialNumber}</li>
-                    <li>Manufacturer: {item.manufacturer}</li>
-                    <li>Category: {item.category}</li>
-                    <li>Quantity: {item.quantity}</li>
+                    <li>Serial Number: {products.serialNumber}</li>
+                    <li>Manufacturer: {products.manufacturer}</li>
+                    <li>Category: {products.category}</li>
+                    <li>Quantity: {products.quantity}</li>
                 </ul>
-                <p>${item.price}.00</p>
+                <p>${products.price}.00</p>
                 <button className="btn btn-outline-success button-list"
                 onClick={() => {
-                    if(item.quantity > 0){
-                        setMyCart(currentCart => [...currentCart, item]);
-                        item.quantity -= 1;
+                    if(products.quantity > 0){
+                        setMyCart(currentCart => [...currentCart, products]);
+                        products.quantity -= 1;
                     }}}>Add to cart</button>
                 <br/>
             </div>
